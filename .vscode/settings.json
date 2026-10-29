@@ -1,0 +1,36 @@
+{
+  // 仓库级设置：只放与"笔记仓库"相关的部分，其余沿用用户级设置。
+  // 这样把仓库 clone 到别的机器上，Markdown 工作流也能一致。
+
+  // ===== Markdown 编辑体验 =====
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.tabSize": 2,
+    "editor.rulers": [],
+    "editor.formatOnSave": false,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
+    }
+  },
+
+  // ===== 图片：落到本文档同级的 assets/ =====
+  "pasteImage.path": "${currentFileDir}/assets",
+  "pasteImage.basePath": "${currentFileDir}",
+  "pasteImage.defaultName": "Y-MM-DD-HH-mm-ss",
+  "pasteImage.forceUnixStyleSeparator": true,
+  "pasteImage.insertPattern": "![${imageName}](${imageFilePath})",
+
+  // ===== Lint 策略：保存时检查，规则见仓库根的 .markdownlint.json =====
+  "markdownlint.run": "onSave",
+
+  // ===== 预览统一走 MPE =====
+  "markdown.extension.preview.autoShowPreviewToSide": false,
+  "markdown-preview-enhanced.enableScriptExecution": false,
+
+  // ===== 写作卫生 =====
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.encoding": "utf8"
+}

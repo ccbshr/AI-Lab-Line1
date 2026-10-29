@@ -1,0 +1,123 @@
+
+================ 环境 ================
+git version 2.56.0.windows.2
+工作目录: /c/Users/29813/ailab/task04
+--- 全局身份配置（若为空说明还没配）---
+user.email=2981364052@qq.com
+user.name=张泽川
+
+================ 1) git init + 本地身份（只在本仓库生效） ================
+Initialized empty Git repository in C:/Users/29813/ailab/task04/.git/
+本仓库身份: AI-Lab Trainee <trainee@example.com>
+
+================ 2) 第一次提交：status → add → commit ================
+--- git status --short（README 未跟踪、.gitignore 未跟踪）---
+?? .gitignore
+?? README.md
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+--- git status --short（已暂存）---
+A  .gitignore
+A  README.md
+[main (root-commit) 50bf779] chore: 初始化仓库，添加 README 与 .gitignore
+ 2 files changed, 5 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+--- git log --oneline ---
+50bf779 chore: 初始化仓库，添加 README 与 .gitignore
+
+================ 3) 第二次提交 + 确认 .gitignore 生效 ================
+--- status 是否忽略了 debug.log（应看不到它）---
+warning: in the working copy of 'notes.txt', LF will be replaced by CRLF the next time Git touches it
+[main f74b09c] feat(notes): 添加 notes.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 notes.txt
+--- git log --oneline --graph --all ---
+* f74b09c feat(notes): 添加 notes.txt
+* 50bf779 chore: 初始化仓库，添加 README 与 .gitignore
+
+================ 4) 分支：git checkout -b + 快进合并 ================
+Switched to a new branch 'feature/greeting'
+warning: in the working copy of 'notes.txt', LF will be replaced by CRLF the next time Git touches it
+[feature/greeting 2e09faf] feat(notes): 追加问候语
+ 1 file changed, 1 insertion(+)
+--- 分支现状 ---
+* feature/greeting 2e09faf feat(notes): 追加问候语
+  main             f74b09c feat(notes): 添加 notes.txt
+Switched to branch 'main'
+--- 合并前 main 的图 ---
+* 2e09faf feat(notes): 追加问候语
+* f74b09c feat(notes): 添加 notes.txt
+* 50bf779 chore: 初始化仓库，添加 README 与 .gitignore
+Updating f74b09c..2e09faf
+Fast-forward
+ notes.txt | 1 +
+ 1 file changed, 1 insertion(+)
+--- 合并后（fast-forward，无 merge 节点）---
+* 2e09faf feat(notes): 追加问候语
+* f74b09c feat(notes): 添加 notes.txt
+* 50bf779 chore: 初始化仓库，添加 README 与 .gitignore
+
+================ 5) 冲突现场：两个分支改同一行 ================
+Switched to a new branch 'feature/conflict'
+warning: in the working copy of 'conflict.txt', LF will be replaced by CRLF the next time Git touches it
+[feature/conflict 061985b] feat: feature 侧的 conflict.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflict.txt
+Switched to branch 'main'
+warning: in the working copy of 'conflict.txt', LF will be replaced by CRLF the next time Git touches it
+[main af0fd8c] feat: main 侧的 conflict.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflict.txt
+--- 执行 git merge feature/conflict（预期冲突）---
+Auto-merging conflict.txt
+CONFLICT (add/add): Merge conflict in conflict.txt
+Automatic merge failed; fix conflicts and then commit the result.
+merge 退出码: 1（非 0 表示有冲突）
+--- git status --short（UU = both modified）---
+AA conflict.txt
+--- 冲突文件里的标记 ---
+<<<<<<< HEAD
+from main
+=======
+from feature
+>>>>>>> feature/conflict
+
+================ 6) 解决冲突：编辑 → add → commit ================
+warning: in the working copy of 'conflict.txt', LF will be replaced by CRLF the next time Git touches it
+[main 319fd0e] merge: 解决 conflict.txt 冲突，保留双方内容
+--- 解决后的最终历史图 ---
+*   319fd0e merge: 解决 conflict.txt 冲突，保留双方内容
+|\  
+| * 061985b feat: feature 侧的 conflict.txt
+* | af0fd8c feat: main 侧的 conflict.txt
+|/  
+* 2e09faf feat(notes): 追加问候语
+* f74b09c feat(notes): 添加 notes.txt
+* 50bf779 chore: 初始化仓库，添加 README 与 .gitignore
+--- 冲突文件最终内容 ---
+from main
+from feature
+
+================ 7) 远程仓库（只配置，不推送） ================
+task04-git-demo.sh: line 87: 你的账号: No such file or directory
+
+================ 8) 常用只读命令速览 ================
+--- git status ---
+On branch main
+nothing to commit, working tree clean
+--- git branch -a ---
+  feature/conflict
+  feature/greeting
+* main
+--- git log --oneline --graph --all -10 ---
+*   319fd0e merge: 解决 conflict.txt 冲突，保留双方内容
+|\  
+| * 061985b feat: feature 侧的 conflict.txt
+* | af0fd8c feat: main 侧的 conflict.txt
+|/  
+* 2e09faf feat(notes): 追加问候语
+* f74b09c feat(notes): 添加 notes.txt
+* 50bf779 chore: 初始化仓库，添加 README 与 .gitignore
+
+==== 演示结束，仓库位置: /c/Users/29813/ailab/task04 ====

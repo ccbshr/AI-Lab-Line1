@@ -1,0 +1,7 @@
+# 存放《AI-Lab 通识学习计划与环境踩坑记录.md》所需的截图
+#
+# 需要的两张图（文件名必须一致）：
+#   env-vscode.png           VS Code 工作界面：文件树 + 扩展面板 + Error Lens 内联提示
+#   terminal-dsh-review.png  终端中 DSH 完成一次交互式代码审查
+#
+# 可以直接把截图拖进来，或在对应 md 里用 Ctrl+Alt+V 粘贴。

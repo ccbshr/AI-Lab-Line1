@@ -1,0 +1,58 @@
+== 工作目录: /c/Users/29813/ailab/task03 ==
+
+== 1) 创建目录树 ==
+project
+project/docs
+project/logs
+project/src
+project/src/core
+project/src/utils
+project/tests
+-- 文件:
+project/src/core/engine.py
+project/src/main.py
+project/src/utils/helper.py
+project/tests/test_main.py
+
+== 2) 批量重命名（note_N.txt -> doc_N.md）==
+-- 重命名前:
+note_1.txt
+note_2.txt
+note_3.txt
+note_4.txt
+note_5.txt
+-- 重命名后:
+doc_1.md
+doc_2.md
+doc_3.md
+doc_4.md
+doc_5.md
+
+== 3) 过滤日志 ==
+-- 原始日志行数: 6
+-- ERROR 行数: 3
+-- errors.log 内容:
+2026-10-17 10:00:07 ERROR disk full on /dev/sda1
+2026-10-17 10:00:22 ERROR timeout calling db
+2026-10-17 10:00:44 ERROR connection refused
+
+== 最终结构 ==
+.
+./logs
+./logs/app.log
+./logs/errors.log
+./project
+./project/docs
+./project/logs
+./project/src
+./project/src/core
+./project/src/main.py
+./project/src/utils
+./project/tests
+./project/tests/test_main.py
+./rename_demo
+./rename_demo/doc_1.md
+./rename_demo/doc_2.md
+./rename_demo/doc_3.md
+./rename_demo/doc_4.md
+./rename_demo/doc_5.md

@@ -1,0 +1,17 @@
+# 渲染/校验产物
+preview-*/
+checks*.json
+
+# 临时目录与临时脚本
+.tmp-*/
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+
+# 系统与编辑器噪音
+.DS_Store
+Thumbs.db
+debug.log
+.tmp-probe.py

@@ -1,0 +1,50 @@
+   1  set -euo pipefail
+   2  WORK="$HOME/ailab/task03"
+   3  [ -n "$WORK" ] || { echo "WORK 为空，拒绝执行"; exit 1; }
+   4  rm -rf "$WORK"
+   5  mkdir -p "$WORK"
+   6  cd "$WORK"
+   7  echo "== 工作目录: $(pwd) =="
+   8  echo
+   9  echo "== 1) 创建目录树 =="
+  10  mkdir -p project/src/utils project/src/core project/tests project/logs project/docs
+  11  touch project/src/main.py
+  12  touch project/src/utils/helper.py
+  13  touch project/src/core/engine.py
+  14  touch project/tests/test_main.py
+  15  find project -type d | sort
+  16  echo "-- 文件:"
+  17  find project -type f | sort
+  18  echo
+  19  echo "== 2) 批量重命名（note_N.txt -> doc_N.md）=="
+  20  mkdir -p rename_demo
+  21  cd rename_demo
+  22  for i in 1 2 3 4 5; do printf '第 %s 份材料\n' "$i" > "note_${i}.txt"; done
+  23  echo "-- 重命名前:"
+  24  ls -1
+  25  for f in note_*.txt; do
+  26    base="${f%.txt}"                  # note_1
+  27    mv -- "$f" "${base/note_/doc_}.md" # doc_1.md  ← 用参数展开替换前缀
+  28  done
+  29  echo "-- 重命名后:"
+  30  ls -1
+  31  cd ..
+  32  echo
+  33  echo "== 3) 过滤日志 =="
+  34  mkdir -p logs
+  35  cat > logs/app.log <<'EOF'
+  36  2026-10-17 10:00:01 INFO  startup ok
+  37  2026-10-17 10:00:07 ERROR disk full on /dev/sda1
+  38  2026-10-17 10:00:15 WARN  slow response 1200ms
+  39  2026-10-17 10:00:22 ERROR timeout calling db
+  40  2026-10-17 10:00:31 INFO  retry ok
+  41  2026-10-17 10:00:44 ERROR connection refused
+  42  EOF
+  43  echo "-- 原始日志行数: $(wc -l < logs/app.log)"
+  44  grep ERROR logs/app.log > logs/errors.log
+  45  echo "-- ERROR 行数: $(wc -l < logs/errors.log)"
+  46  echo "-- errors.log 内容:"
+  47  cat logs/errors.log
+  48  echo
+  49  echo "== 最终结构 =="
+  50  find . -maxdepth 3 | sort
