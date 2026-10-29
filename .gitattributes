@@ -1,0 +1,21 @@
+# 统一行尾，避免 Windows/Linux 混用出错
+* text=auto eol=lf
+
+# Shell 脚本必须是 LF —— 否则在 WSL/Linux 里执行会报 $'\r': command not found
+*.sh text eol=lf
+
+# Windows 脚本保留 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# 二进制文件不要做任何换行转换
+*.docx binary
+*.doc binary
+*.xlsx binary
+*.pptx binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.zip binary

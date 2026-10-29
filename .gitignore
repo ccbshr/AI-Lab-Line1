@@ -15,3 +15,6 @@ __pycache__/
 Thumbs.db
 debug.log
 .tmp-probe.py
+
+# 个人作业文档（不属于本项目）
+*访谈提纲.docx
